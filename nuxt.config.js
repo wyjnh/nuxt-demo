@@ -20,9 +20,10 @@ module.exports = {
   */
   loading: { color: '#fff' },
   /*
-  ** Global CSS
+  ** Global CSS 全局引用的css 
   */
   css: [
+    'assets/main.css'
   ],
   /*
   ** Plugins to load before mounting the App
@@ -34,6 +35,9 @@ module.exports = {
   */
   buildModules: [
   ],
+  router: {
+    middleware: 'auth'
+  },
   /*
   ** Nuxt.js modules
   */

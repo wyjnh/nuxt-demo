@@ -1,0 +1,14 @@
+/* 路由全局过度效果 */
+.page-enter-active, .page-leave-active {
+    transition: opacity .5s;
+}
+.page-enter, .page-leave-active {
+    opacity: 0;
+}
+/* 自定义路由过渡效果 */
+.test-enter-active, .test-leave-active {
+    transition: opacity 1s;
+}
+.test-enter, .test-leave-active {
+    opacity: 0;
+}

@@ -6,17 +6,29 @@ import {
   globalHandleError
 } from './utils'
 
+import NuxtError from '../layouts/error.vue'
 import NuxtLoading from './components/nuxt-loading.vue'
 
-import _6f6c098b from '../layouts/default.vue'
+import '../assets/main.css'
 
-const layouts = { "_default": _6f6c098b }
+import _6f6c098b from '../layouts/default.vue'
+import _513b4dcc from '../layouts/mylayout.vue'
+
+const layouts = { "_default": _6f6c098b,"_mylayout": _513b4dcc }
 
 export default {
   head: {"title":"nuxt-demo","meta":[{"charset":"utf-8"},{"name":"viewport","content":"width=device-width, initial-scale=1"},{"hid":"description","name":"description","content":"My prime Nuxt.js project"}],"link":[{"rel":"icon","type":"image\u002Fx-icon","href":"\u002Ffavicon.ico"}],"style":[],"script":[]},
 
   render (h, props) {
     const loadingEl = h('NuxtLoading', { ref: 'loading' })
+
+    if (this.nuxt.err && NuxtError.layout) {
+      this.setLayout(
+        typeof NuxtError.layout === 'function'
+          ? NuxtError.layout(this.context)
+          : NuxtError.layout
+      )
+    }
 
     const layoutEl = h(this.layout || 'nuxt')
     const templateEl = h('div', {
